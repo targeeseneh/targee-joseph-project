@@ -1,4 +1,4 @@
-
+//this is our function that gets user informations
 function submit() {
     let name = document.getElementById("name").value;
     let contact = document.getElementById("contact").value;
@@ -6,30 +6,19 @@ function submit() {
     let destination = document.getElementById("destination").value;
     const time = document.getElementById("time").value;
 
-    if (destination === destination.toLowerCase()) {
-        destination = destination.toLowerCase();
-    }
-    if (name === name.toLowerCase()) {
-        name = name.toLowerCase();
-    }
-    if (contact === contact.toLowerCase()) {
-        contact = contact.toLowerCase();
-    }
-    if (adress === adress.toLowerCase()) {
-        adress = adress.toLowerCase();
-    }
+
 
     getRide(destination);
 }
 
-
+//styling our pages display
 function book() {
 
 	document.getElementById("welcome-screen").style.display = "none"
 
 	document.getElementById("form-page").style.display = "block"
 }
-
+//our array of objects for our drivers
 	let drivers = [
 	    {
 			name: "James Kanmuteh",
@@ -99,6 +88,7 @@ function book() {
 			
 	]
 
+//matching user location with our drivers loctions to sent a ride
 function getRide(location) {
     const lowerCaseLocation = location.toLowerCase();
     
@@ -107,12 +97,11 @@ function getRide(location) {
             alert("Your ride has been booked with " + drivers[i].name + ". " + "Here is his number: " + drivers[i].contact);
             break;
         }
-
-         // else{
-         // 	alert("Opps!! Sorry, Not In Our Location.")
-         // 	break
-         // }
-
+        else if(i+1 === drivers.length && drivers[i].location.toLowerCase != lowerCaseLocation){
+        	alert("Sorry, we couldn't find a drive for your destination.")
+        }
     }
 }
 
+
+	
